@@ -1,0 +1,68 @@
+# Compiled Source #
+###################
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*.pdb
+*.dll.config
+*.cache
+
+#include these dll's though
+!/packages/*/lib/*.dll
+!/packages/*/lib/*/*.dll
+!*CommonReferences/*.dll
+
+# Packages #
+############
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.bzip
+*.bz2
+*.xz
+*.lzma
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+*.mdf
+*.ldf
+
+# OS Generated Files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# ASP.NET Stuff #
+#################
+[Oo]bj/
+[Bb]in/
+*.suo
+*.user
+TestResults/
+*.vspscc
+*.vssscc
+UpgradeLog.XML
+_UpgradeReport_Files/
+*.Publish.xml
+
+# Visual Studio Stuff#
+######################
+packages/

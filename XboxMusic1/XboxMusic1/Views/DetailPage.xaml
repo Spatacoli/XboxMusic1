@@ -1,0 +1,63 @@
+﻿<prism:VisualStateAwarePage
+    x:Class="XboxMusic1.Views.DetailPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:XboxMusic1.Views"
+    xmlns:prism="using:Microsoft.Practices.Prism.StoreApps"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    prism:ViewModelLocator.AutoWireViewModel="True"
+    d:DataContext="XboxMusic1.ViewModels.DetailPageViewModel">
+
+    <Page.Resources>
+    </Page.Resources>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="280"/>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Button x:Name="backButton" Margin="39,59,39,0" Command="{Binding GoBackCommand}"
+                    Style="{StaticResource NavigationBackButtonNormalStyle}"
+                    VerticalAlignment="Top"
+                    AutomationProperties.Name="Back"
+                    AutomationProperties.AutomationId="BackButton"
+                    AutomationProperties.ItemType="Navigation Button"/>
+        <Grid Grid.Column="1" Margin="0,59,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="280" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="0" Margin="0" Source="{Binding ImageUrl}" Stretch="Uniform" />
+            <StackPanel Grid.Row="1" Orientation="Vertical" Margin="0,30,0,0" >
+                <HyperlinkButton Margin="0,0,0,20" x:Uid="XboxAlbumLink" NavigateUri="{Binding XboxLink}" />
+                <TextBlock Text="{Binding AlbumTitle}"  Style="{StaticResource TitleTextBlockStyle}"/>
+                <TextBlock Text="{Binding ReleaseDate}"  Style="{StaticResource BodyTextBlockStyle}"/>
+                <TextBlock Text="{Binding GenreList}" Style="{StaticResource BodyTextBlockStyle}"/>
+                <TextBlock Text="{Binding SubgenreList}" Style="{StaticResource BodyTextBlockStyle}"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Column="2" Margin="50" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <ItemsControl ItemsSource="{Binding Tracks}" Width="650" >
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Width="600">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition Width="380" />
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="100" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="{Binding TrackNumber}"  Style="{StaticResource BodyTextBlockStyle}"/>
+                            <TextBlock Grid.Column="1" Text="{Binding Name}"  Style="{StaticResource BodyTextBlockStyle}"/>
+                            <TextBlock Grid.Column="2" Text="{Binding Duration}" TextAlignment="Right"  Style="{StaticResource BodyTextBlockStyle}"/>
+                            <HyperlinkButton Grid.Column="3" x:Uid="XboxTrackLink" Margin="0" Padding="0" HorizontalAlignment="Right" NavigateUri="{Binding Link}" />
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
+    </Grid>
+</prism:VisualStateAwarePage>
